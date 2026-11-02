@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101216">
+  <title>Deck Randomizer by Fo1999</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Deck Randomizer by Fo1999">
+        <span class="brand-mark">F</span>
+        <span><strong>DECK RANDOMIZER</strong><small>BY FO1999</small></span>
+      </a>
+      <div class="local-tag"><span class="status-dot"></span> LOCAL EDITION</div>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">YOUR FORMAT · YOUR DECK POOL</p>
+      <h1>LASCIA LE FATE <em>DECIDERE!</em></h1>
+      <p class="hero-copy">Carica la lista del formato che vuoi giocare, poi lascia scegliere al caso.</p>
+    </section>
+
+    <section class="panel database-panel">
+      <div class="database-info">
+        <div class="database-icon">▤</div>
+        <div class="database-copy">
+          <p class="eyebrow">DECK DATABASE</p>
+          <h2 id="database-title">Nessuna lista caricata</h2>
+          <p id="database-subtitle">Seleziona il JSON del formato che vuoi giocare.</p>
+        </div>
+      </div>
+      <label for="json-file" class="button button-secondary">Carica lista JSON</label>
+      <input id="json-file" class="visually-hidden" type="file" accept=".json,application/json">
+    </section>
+
+    <section class="draw-panel panel">
+      <div class="draw-emblem" aria-hidden="true"><span>✦</span></div>
+      <p class="eyebrow">SINGLE DECK DRAW</p>
+      <h2>Quale sarà il tuo prossimo deck?</h2>
+      <p class="draw-description">Ogni deck estratto viene rimosso dal tuo pool personale fino al reset.</p>
+      <button id="draw-button" class="button button-primary" type="button" disabled>
+        <span class="dice">⚄</span> RANDOMIZZA DECK
+      </button>
+      <div id="current-draw" class="current-draw" hidden aria-live="polite">
+        <span class="current-draw-label">IL TUO DECK</span>
+        <strong id="current-draw-name"></strong>
+        <a id="current-draw-link" class="button button-primary current-draw-button"
+           href="#" target="_blank" rel="noopener noreferrer">APRI SU YGOPRODECK ↗</a>
+      </div>
+      <p id="status-message" class="status-message" role="status">Carica un file JSON per iniziare.</p>
+    </section>
+
+    <section class="pool-summary">
+      <div class="summary-item">
+        <span class="summary-label">DISPONIBILI</span>
+        <strong id="remaining-count">—</strong>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-item">
+        <span class="summary-label">GIÀ ESTRATTI DA TE</span>
+        <strong id="drawn-count">0</strong>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-item">
+        <span class="summary-label">TOTALE NELLA LISTA</span>
+        <strong id="total-count">—</strong>
+      </div>
+    </section>
+
+    <section class="panel extracted-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR PERSONAL HISTORY</p>
+          <h2>Deck estratti</h2>
+        </div>
+        <button id="reset-button" class="button button-quiet" type="button" disabled>↻ Reset lista</button>
+      </div>
+      <div class="progress-track"><div id="progress-fill" class="progress-fill"></div></div>
+      <div id="extracted-list" class="extracted-list">
+        <div class="empty-state">
+          <span class="empty-icon">◇</span>
+          <p>Non hai ancora estratto nessun deck.</p>
+          <small>I tuoi deck estratti appariranno qui.</small>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>DECK RANDOMIZER BY FO1999</span>
+      <span>FORMATO DETERMINATO DAL JSON · DATI SALVATI LOCALMENTE</span>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
